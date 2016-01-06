@@ -1,7 +1,7 @@
 Node.js Controller and MQTT API for Anki Overdrive
 ================================================================================
 
-The [node-mqtt-for-anki-overdrive](https://github.com/IBM-Bluemix/node-mqtt-for-anki-overdrive) project contains two main components to control [Anki Overdrive](https://anki.com/) cars.
+The [node-mqtt-for-anki-overdrive](https://github.com/IBM-Bluemix/node-mqtt-for-anki-overdrive) project contains two main components to control [Anki Overdrive](https://anki.com/) cars. 
 
 * Controller (Node.js application) running on MacBooks or notebooks to invoke commands and receive messages via CLI (command line interface) using the Anki Drive [Bluebooth Low Energy](http://developer.anki.com/drive-sdk/docs/programming-guide) interface.
 * MQTT interface to invoke commands from cloud platforms like [IBM Bluemix](https://bluemix.net) and receive events from cars in the cloud. This allows for example to build collision prevention software as demonstrated below.
@@ -9,6 +9,8 @@ The [node-mqtt-for-anki-overdrive](https://github.com/IBM-Bluemix/node-mqtt-for-
 In order to run this project I used the [Anki Overdrive](https://anki.com/en-us/overdrive/starter-kit) Starter Kit. Additionally you need a device to run the Node.js application which also supports Bluetooth Low Energy. I tested it with a MacBook Pro successully (without additional adapter). Check out the [photo](https://raw.githubusercontent.com/IBM-Bluemix/node-mqtt-for-anki-overdrive/master/screenshots/photo.jpg) of the setup.
 
 ![alt text](https://raw.githubusercontent.com/IBM-Bluemix/node-mqtt-for-anki-overdrive/master/screenshots/photo-small.jpg "Photo")
+
+Disclaimer: I followed the documentation on the [Anki Drive SDK](http://developer.anki.com/drive-sdk/docs/programming-guide) site. The code below works for my current setup. I haven't checked other platforms, firmeware versions etc. For some data, esp. the offsets, I had to guess how to interpretate the data from the cars since I hadn't found any documentation.
 
 Author: Niklas Heidloff [@nheidloff](http://twitter.com/nheidloff)
 
