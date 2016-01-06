@@ -1,0 +1,25 @@
+This product includes software originally developed by IBM Corporation
+Copyright 2016 IBM Corp.
+
+
+The following Node.js modules are used but not bundled with this project.
+
+noble
+https://github.com/sandeepmistry/noble
+https://www.npmjs.com/package/noble
+MIT: https://github.com/sandeepmistry/noble/blob/master/LICENSE
+
+mqtt
+https://github.com/mqttjs/MQTT.js
+https://www.npmjs.com/package/mqtt
+MIT: https://github.com/mqttjs/MQTT.js/blob/master/LICENSE.md
+
+async
+https://github.com/caolan/async
+https://www.npmjs.com/package/async
+MIT: https://github.com/caolan/async/blob/master/LICENSE
+
+properties
+https://github.com/gagle/node-properties
+https://www.npmjs.com/package/properties
+MIT: https://github.com/gagle/node-properties/blob/master/LICENSE
