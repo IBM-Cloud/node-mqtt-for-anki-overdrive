@@ -10,7 +10,7 @@ In order to run this project I used the [Anki Overdrive](https://anki.com/en-us/
 
 ![alt text](https://raw.githubusercontent.com/IBM-Bluemix/node-mqtt-for-anki-overdrive/master/screenshots/photo-small.jpg "Photo")
 
-[![Video](screenshots/video.jpg)](https://www.youtube.com/watch?v=Wo4zeQxxOOI)
+[![Video](https://raw.githubusercontent.com/IBM-Bluemix/node-mqtt-for-anki-overdrive/master/screenshots/video.jpg)](https://www.youtube.com/watch?v=Wo4zeQxxOOI)
 
 Disclaimer: I followed the documentation on the [Anki Drive SDK](http://developer.anki.com/drive-sdk/docs/programming-guide) site. The code below works for my current setup. I haven't checked other platforms, firmware versions etc. For some data, esp. the offsets, I had to guess how to interpretate the data from the cars since I hadn't found any documentation.
 
