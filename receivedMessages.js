@@ -38,7 +38,7 @@ module.exports = function() {
 	    }
 
 	    else if (messageId == '25') {
-	      // example: tbd
+	      // example: <Buffer 05 19 6e 26 00 00>
 	      var desc = 'Version Received';
 	      var version = data.readUInt16LE(2);
 	      console.log('Message: ' + messageId, data, desc + ' - version: ' + version);
@@ -56,7 +56,7 @@ module.exports = function() {
 	    }
 
 	    else if (messageId == '27') {
-	      // example: tbd
+	      // example: <Buffer 03 1b 50 0f>
 	      var desc = 'Battery Level Received';
 	      var level = data.readUInt16LE(2);
 	      console.log('Message: ' + messageId, data, desc + ' - level: ' + level);
@@ -76,17 +76,29 @@ module.exports = function() {
 	    else if (messageId == '39') { 
 	      // example: <Buffer 10 27 21 28 48 e1 86 c2 02 01 47 00 00 00 02 fa 00>
 	      var desc = 'Localization Position Update Received';
+	      var pieceLocation = data.readUInt8(2);
+	      var pieceId = data.readUInt8(3); // in my starter kit: 
+	      // 1 x straight: 36
+	      // 1 x straight: 39
+	      // 1 x straight: 40
+	      // 1 x curve: 20
+	      // 1 x curve: 23
+	      // 2 x curve: 18
+	      // 2 x curve: 17
+	      // 1 x start/finish: 34 (long) and 33 (short)
 	      var offset = data.readFloatLE(4);
 	      var speed = data.readUInt16LE(8);
-	      console.log('Message: ' + messageId, data, desc + ' - offset: '  + offset + ' speed: ' + speed);
-
+	      console.log('Message: ' + messageId, data, desc + ' - offset: '  + offset + ' speed: ' + speed + ' - pieceId: '  + pieceId + ' pieceLocation: ' + pieceLocation);;
+	     
 	      if (mqttClient) {
 	      	mqttClient.publish('iot-2/evt/' + messageId + '/fmt/json', JSON.stringify({
 	          "d" : {
 	            "description" : desc,
 	            "date": date,
 	            "offset": offset,
-	            "speed": speed
+	            "speed": speed,
+	            "pieceId": pieceId,
+	            "pieceLocation": pieceLocation
 	          }
 	        }), function () {
 	        }); 

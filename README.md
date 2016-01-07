@@ -10,7 +10,9 @@ In order to run this project I used the [Anki Overdrive](https://anki.com/en-us/
 
 ![alt text](https://raw.githubusercontent.com/IBM-Bluemix/node-mqtt-for-anki-overdrive/master/screenshots/photo-small.jpg "Photo")
 
-Disclaimer: I followed the documentation on the [Anki Drive SDK](http://developer.anki.com/drive-sdk/docs/programming-guide) site. The code below works for my current setup. I haven't checked other platforms, firmeware versions etc. For some data, esp. the offsets, I had to guess how to interpretate the data from the cars since I hadn't found any documentation.
+[![Video](screenshots/video.jpg)](https://www.youtube.com/watch?v=Wo4zeQxxOOI)
+
+Disclaimer: I followed the documentation on the [Anki Drive SDK](http://developer.anki.com/drive-sdk/docs/programming-guide) site. The code below works for my current setup. I haven't checked other platforms, firmware versions etc. For some data, esp. the offsets, I had to guess how to interpretate the data from the cars since I hadn't found any documentation.
 
 Author: Niklas Heidloff [@nheidloff](http://twitter.com/nheidloff)
 
@@ -89,6 +91,8 @@ Collision Prevention
 In order to understand the collision prevention feature you need to understand how offsets work. Here is a quick diagram that explains the possible offset values and the purpose of the 'startlane' parameter in the config files.
 
 ![alt text](https://raw.githubusercontent.com/IBM-Bluemix/node-mqtt-for-anki-overdrive/master/screenshots/offset.jpg "Offset")
+
+![alt text](https://raw.githubusercontent.com/IBM-Bluemix/node-mqtt-for-anki-overdrive/master/screenshots/tracks.jpg "Tracks")
 
 I've developed a simple sample that shows that GroundShock and Skull can never collide. The cars send status updates about their current offset which is tracked in the cloud (Node-RED flow). When Skull (red car) wants to turn left the flow checks whether it would still have enough distance to GroundShock (blue car) and vise versa.
 
