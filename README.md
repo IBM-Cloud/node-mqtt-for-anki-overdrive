@@ -80,7 +80,7 @@ Open Node-RED in a browser, for example http://anki.mybluemix.net/red/#. Copy th
 Remote Controlling the Cars
 ================================================================================
 
-After you have connected the cars with the controllers you can invoke commands by clicking on the grey nodes in the Node-RED flow. The events that the cars send are displayed in the debug tab in the right sidebar.
+After you have connected the cars with the controllers you can invoke commands by clicking on the grey nodes in the [Node-RED flow](https://github.com/IBM-Bluemix/node-mqtt-for-anki-overdrive/blob/master/node-red.json). The events that the cars send are displayed in the debug tab in the right sidebar.
 
 ![alt text](https://raw.githubusercontent.com/IBM-Bluemix/node-mqtt-for-anki-overdrive/master/screenshots/node-red-flow.png "Node-RED")
 
@@ -97,3 +97,13 @@ In order to understand the collision prevention feature you need to understand h
 I've developed a simple sample that shows that GroundShock and Skull can never collide. The cars send status updates about their current offset which is tracked in the cloud (Node-RED flow). When Skull (red car) wants to turn left the flow checks whether it would still have enough distance to GroundShock (blue car) and vise versa.
 
 ![alt text](https://raw.githubusercontent.com/IBM-Bluemix/node-mqtt-for-anki-overdrive/master/screenshots/collision-prevention2.png "Collision Prevention")
+
+
+Controlling the Cars via Voice
+================================================================================
+
+The cars can be steered via speech by using the [Watson Speech to Text](http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/speech-to-text.html) service and the [Watson Natural Language Classifier](http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/nl-classifier.html). Four types of commands are currently implemented: move, stop, turn left, turn right.
+
+To use this capability another application need to be hosted on Bluemix based on the GitHub project [sphero-bluemix-speech](https://github.com/IBM-Bluemix/sphero-bluemix-speech). Follow the instructions to register another IoT device (type: watson; id: speech) and add the credentials to your application.
+
+Additionally you need to use an extended version of the [Node-RED flow](https://github.com/IBM-Bluemix/node-mqtt-for-anki-overdrive/blob/master/node-red-speech.json). To optimize the quality of the received text the flow uses the Watson classifier service which you need to create via Bluemix. The classifier needs to be trained as [documented](http://heidloff.net/article/Classify-Natural-Language-with-ibm-Watson) with the provided [training data](https://github.com/IBM-Bluemix/node-mqtt-for-anki-overdrive/blob/master/data_train.csv). The classifier id together with the user name and password need to be pasted into the flow and then the flow needs to be deployed.

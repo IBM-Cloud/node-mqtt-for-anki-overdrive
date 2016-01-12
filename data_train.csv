@@ -1,0 +1,29 @@
+left,left
+turn left,left
+take a left,left
+move left,left
+drive left,left
+left side,left
+change to the left lane,left
+right,right
+turn right,right
+take a right,right
+move right,right
+drive right,right
+right side,right
+change to the right lane,right
+go,move
+start,move
+drive,move
+fast,move
+move,move
+as fast as you can,move
+ready steady go,move
+proceed,move
+stop,stop
+halt,stop
+take a break,stop
+quit,stop
+terminate,stop
+discontinue,stop
+emergency break,stop
