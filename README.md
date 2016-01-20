@@ -113,3 +113,9 @@ Controlling the Cars via Kinect
 ================================================================================
 
 The cars can be steered via Kinect. Follow in instructions in the separate project [Controller to connect Kinect with Bluemix](https://github.com/IBM-Bluemix/controller-kinect-bluemix) and check out the [screenshots](https://github.com/IBM-Bluemix/controller-kinect-bluemix/tree/master/screenshots). The commands from Kinect are received in the [Node-RED flow](https://github.com/IBM-Bluemix/node-mqtt-for-anki-overdrive/blob/master/node-red-speech-kinect.json) and then forwarded to the cars.
+
+
+Controlling the Cars via Leap Motion
+================================================================================
+
+The cars can be steered via [Leap Motion](https://www.leapmotion.com/product/desktop). Follow in instructions in the separate project [Sample to connect Leap Motion with Bluemix](https://github.com/IBM-Bluemix/sample-leapmotion-bluemix) and check out the [screenshots](https://github.com/IBM-Bluemix/sample-leapmotion-bluemix/tree/master/screenshots). The commands from Leap Motion are received in the [Node-RED flow](https://github.com/IBM-Bluemix/node-mqtt-for-anki-overdrive/blob/master/node-red-speech-kinect-leap.json) and then forwarded to the cars.
