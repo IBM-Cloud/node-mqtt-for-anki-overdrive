@@ -1,0 +1,13 @@
+{
+  "discover": true,
+  "type": "demo",
+  "compute": [
+    "cloud_foundry"
+  ],
+  "runtimes": [
+    "node"
+  ],
+  "services": [
+    "WatsonSpeechToText", "WatsonNaturalLanguageClassifier", "IoTFoundation"
+  ]
+}

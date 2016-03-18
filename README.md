@@ -8,7 +8,7 @@ The [node-mqtt-for-anki-overdrive](https://github.com/IBM-Bluemix/node-mqtt-for-
 
 In order to run this project I used the [Anki Overdrive](https://anki.com/en-us/overdrive/starter-kit) Starter Kit. Additionally you need a device to run the Node.js application which also supports Bluetooth Low Energy. I tested it with a MacBook Pro successully (without additional adapter). Check out the [photo](https://raw.githubusercontent.com/IBM-Bluemix/node-mqtt-for-anki-overdrive/master/screenshots/photo.jpg) of the setup.
 
-![alt text](https://raw.githubusercontent.com/IBM-Bluemix/node-mqtt-for-anki-overdrive/master/screenshots/photo-small.jpg "Photo")
+[![Anki Overdrive Bluemix Demo Presentation](https://raw.githubusercontent.com/IBM-Bluemix/node-mqtt-for-anki-overdrive/master/screenshots/deck.png)](http://www.slideshare.net/niklasheidloff/ibm-bluemix-demo-with-anki-overdrive-cars)
 
 [![Video](https://raw.githubusercontent.com/IBM-Bluemix/node-mqtt-for-anki-overdrive/master/screenshots/video.jpg)](https://www.youtube.com/watch?v=Wo4zeQxxOOI)
 
