@@ -4,9 +4,9 @@
   "version": "0.0.1",
   "author": "Niklas Heidloff <niklas_heidloff@de.ibm.com>",
   "dependencies": {
-    "noble": "~1.2.1",
     "async": "~0.2.9",
     "mqtt": "1.5.0",
+    "noble-highsierra": "^1.8.1",
     "properties": "1.2.1"
   },
   "repository": {
