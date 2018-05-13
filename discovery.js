@@ -14,24 +14,24 @@
 // limitations under the License.
 //------------------------------------------------------------------------------
 
-var noble = require('noble');
+var noble = require('noble-highsierra');
 
 noble.on('stateChange', function(state) {
-  if (state === 'poweredOn') {
-    noble.startScanning();
+    if (state === 'poweredOn') {
+        noble.startScanning();
 
-    setTimeout(function() {
-       noble.stopScanning();
-       process.exit(0);
-     }, 2000);
-  } else {
-    noble.stopScanning();
-  }
+        setTimeout(function() {
+            noble.stopScanning();
+            process.exit(0);
+        }, 2000);
+    } else {
+        noble.stopScanning();
+    }
 });
 
 noble.on('discover', function(peripheral) {
-  var serviceUuids = JSON.stringify(peripheral.advertisement.serviceUuids);
-  if(serviceUuids.indexOf("be15beef6186407e83810bd89c4d8df4") > -1) {
-    console.log('Car discovered. ID: ' + peripheral.id); 
-  }
+    var serviceUuids = JSON.stringify(peripheral.advertisement.serviceUuids);
+    if (serviceUuids.indexOf("be15beef6186407e83810bd89c4d8df4") > -1) {
+        console.log('Car discovered. ID: ' + peripheral.id);
+    }
 });
