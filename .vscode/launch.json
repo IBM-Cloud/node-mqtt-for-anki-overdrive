@@ -7,32 +7,36 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch GroundShock",
+            "name": "Test Car",
+            "program": "${workspaceFolder}/index.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Skull via NPM",
+            "cwd": "${workspaceFolder}",
             "runtimeExecutable": "npm",
             "runtimeArgs": [
                 "run-script",
-                "controller.js",
-                "config-gs.properties"
+                "start-skull"
             ],
             "port": 9229
         },
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch Skull",
+            "name": "Launch GroundShock via NPM",
+            "cwd": "${workspaceFolder}",
             "runtimeExecutable": "npm",
             "runtimeArgs": [
                 "run-script",
-                "controller.js",
-                "config-skull.properties"
+                "start-gs"
             ],
             "port": 9230
         },
         {
-            "type": "node",
-            "request": "launch",
-            "name": "Launch Program",
-            "program": "${file}"
+
         }
+
     ]
 }

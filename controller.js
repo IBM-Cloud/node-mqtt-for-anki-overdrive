@@ -17,7 +17,6 @@
 var config = require('./config-wrapper.js')();
 var async = require('async');
 var noble = require('noble-highsierra');
-var mqtt = require('mqtt');
 var readline = require('readline');
 
 var receivedMessages = require('./receivedMessages.js')();
@@ -28,7 +27,7 @@ var writeCharacteristic;
 var car;
 var lane;
 
-config.read(process.argv[2], function(carId, startlane, mqttClient) {
+config.read(process.argv[2], function(carId, startlane) {
 
     if (!carId) {
         console.log('Define carid in a properties file and pass in the name of the file as argv');
@@ -112,54 +111,6 @@ config.read(process.argv[2], function(carId, startlane, mqttClient) {
         });
     }
 
-    mqttClient.on('error', function(err) {
-        console.error('MQTT client error ' + err);
-        mqttClient = null;
-    });
-    mqttClient.on('close', function() {
-        console.log('MQTT client closed');
-        mqttClient = null;
-    });
-
-    mqttClient.on('message', function(topic, message, packet) {
-        var msg = JSON.parse(message.toString());
-        //console.log('Message received from Bluemix');
-
-        if (msg.d.action == '#s') {
-            var cmd = "s";
-            if (msg.d.speed) {
-                cmd = cmd + " " + msg.d.speed;
-                if (msg.d.accel) {
-                    cmd = cmd + " " + msg.d.accel;
-                }
-            }
-            invokeCommand(cmd);
-        } else if (msg.d.action == '#c') {
-            var cmd = "c";
-            if (msg.d.offset) {
-                cmd = cmd + " " + msg.d.offset;
-            }
-            invokeCommand(cmd);
-        } else if (msg.d.action == '#q') {
-            var cmd = "q";
-            invokeCommand(cmd);
-        } else if (msg.d.action == '#ping') {
-            var cmd = "ping";
-            invokeCommand(cmd);
-        } else if (msg.d.action == '#ver') {
-            var cmd = "ver";
-            invokeCommand(cmd);
-        } else if (msg.d.action == '#bat') {
-            var cmd = "bat";
-            invokeCommand(cmd);
-        } else if (msg.d.action == '#l') {
-            var cmd = "l";
-            invokeCommand(cmd);
-        } else if (msg.d.action == '#lp') {
-            var cmd = "lp";
-            invokeCommand(cmd);
-        }
-    });
 });
 
 function init(startlane) {
