@@ -44,10 +44,21 @@ module.exports = class TrafficLight {
     }
 
     isRed(car) {
+        // console.log(`${car.name} : collisionPath - ${car.collisionPath}`);
         let scanCars = this.carsInCriticalSections.filter((el) => {
             return el.carId !== car.carId;
         });
         if (scanCars.length > 0) {
+            // console.log(`${scanCars[0].name} : collisionPath - ${scanCars[0].collisionPath}`);
+            // Going the same way (side by side)
+            if (car.collisionPath[0] === scanCars[0].collisionPath[0] && car.collisionPath[1] === scanCars[0].collisionPath[1]) {
+                return false;
+            }
+            // Going opposite directions
+            if (car.collisionPath[1] === scanCars[0].collisionPath[0] && car.collisionPath[0] === scanCars[0].collisionPath[1]) {
+                return false;
+            }
+            // Going accross each other
             return true;
         } else {
             return false;

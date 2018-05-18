@@ -21,6 +21,7 @@ let cars = carPair1;
 // Other 2 ID: 900b8431b7724279a7ebeb02832e415d
 
 gs = new Car(cars[0], "GroundShock", 1, trafficLight);
+let speed = 500;
 
 let interval = setInterval(() => {
     if (gs.discovered) {
@@ -35,25 +36,22 @@ let interval = setInterval(() => {
                         goForAwhile(skull);
                     }, 5000);
                 });
-                gs.testTrack(() => {
-                    setTimeout(() => {
-                        goForAwhile(gs);
-                    }, 5000);
-                });
+                setTimeout(() => {
+                    gs.testTrack(() => {
+                        setTimeout(() => {
+                            goForAwhile(gs);
+                        }, 5000);
+                    });
+                }, 1000);
             }
         }, 500);
     }
 }, 500);
 
 function goForAwhile(car) {
-    car.setSpeed(600, 100);
+    car.setSpeed(speed, 100);
+    speed += 100;
     setTimeout(() => {
         car.stop();
-        // setTimeout(() => {
-        //     car.continue();
-        //     setTimeout(() => {
-        //         car.stop();
-        //     }, 15000)
-        // }, 5000);
-    }, 30000);
+    }, 60000);
 }

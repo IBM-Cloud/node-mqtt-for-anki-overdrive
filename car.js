@@ -153,7 +153,7 @@ module.exports = class Car {
     testTrack(callback) {
         this.onTestCompleteCallback = callback;
         this.isTesting = true;
-        this.setSpeed(600, 2000);
+        this.setSpeed(600, 500);
         console.log("Testing Track");
     }
 
@@ -174,7 +174,7 @@ module.exports = class Car {
             // console.log(this.name + ": Adding Piece: " + pieceId);
             if (!this.isTesting) {
                 this.determineCriticalIndices();
-                console.log(this.name + ": Test Complete. Critical Indices: " + JSON.stringify(this.criticalIndices));
+                // console.log(this.name + ": Test Complete. Critical Indices: " + JSON.stringify(this.criticalIndices));
                 if (this.onTestCompleteCallback) {
                     this.onTestCompleteCallback();
                 }
@@ -184,16 +184,13 @@ module.exports = class Car {
 
     completeTest() {
         this.isTesting = false;
+
         this.stop();
+        console.log(`${this.name} ${JSON.stringify(this.currTestTrackArray)}`);
     }
 
     determineCriticalIndices() {
         this.criticalIndices = [3, 7];
-        // for (let index in this.currTestTrackArray) {
-        //     if (this.currTestTrackArray[index] === 10) {
-        //         this.criticalIndices.push(index - 1);
-        //     }
-        // }
     }
 
     setIndex(pieceId) {
@@ -215,8 +212,8 @@ module.exports = class Car {
                 this.trafficLight.leftIntersection(this);
 
             } else if ((this.currTestTrackArray[this.pieceIndex] === 10) && this.trafficLight) { // We are on an intersection
-                this.collisionPath[0] = this.currTestTrackArray[this.pieceIndex - 1];
-                this.collisionPath[1] = (this.pieceIndex === this.currTestTrackArray.length - 1) ? 0 : this.pieceIndex + 1;
+                this.collisionPath[0] = this.previousPiece();
+                this.collisionPath[1] = this.nextPiece();
 
                 this.inCriticalSection = true;
                 this.trafficLight.enterCriticalSection(this);
@@ -225,9 +222,27 @@ module.exports = class Car {
                     console.log(`${this.name} Traffic Light: is Red`);
                     this.stop();
                 } else {
-                    console.log(`${this.name} Traffic Light: is Green`);
+                    // console.log(`${this.name} Traffic Light: is Green`);
                 }
             }
+        }
+    }
+
+    previousPiece() {
+        if (this.pieceIndex > 0) {
+            return this.currTestTrackArray[this.pieceIndex - 1];
+        } else {
+            return this.currTestTrackArray[this.currTestTrackArray.length - 1];
+        }
+    }
+
+    nextPiece() {
+        if (this.pieceIndex < (this.currTestTrackArray.length - 1)) {
+            // console.log(`${this.name} index: ${this.pieceIndex} returning ${this.pieceIndex + 1}`);
+            return this.currTestTrackArray[this.pieceIndex + 1];
+        } else {
+            // console.log(`${this.name} returning 0`);
+            return this.currTestTrackArray[0];
         }
     }
 
@@ -238,12 +253,12 @@ module.exports = class Car {
         // }
 
         let index = this.pieceIndex > 0 ? this.pieceIndex : this.currTestTrackArray.length - 1;
-        console.log(`path[1] = ${JSON.stringify(path)} ${this.name} oldPath = ${JSON.stringify(this.collisionPath)}`);
+        // console.log(`path[1] = ${JSON.stringify(path)} ${this.name} oldPath = ${JSON.stringify(this.collisionPath)}`);
         if (path[1] === this.currTestTrackArray[index]) {
-            console.log("No Collision");
+            // console.log("No Collision");
             return false;
         }
-        console.log("\nWILL COLLIDE!!!\n");
+        // console.log("\nWILL COLLIDE!!!\n");
         return true;
     }
 
