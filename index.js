@@ -1,25 +1,59 @@
 const Car = require("./car");
+const TrafficLight = require("./TrafficLight");
+let trafficLight = new TrafficLight();
 let gs;
 let skull;
 
-gs = new Car("fde9c0febc9148fa915e584c85af62eb", 1);
+const carPair1 = [
+    "fde9c0febc9148fa915e584c85af62eb",
+    "0a1b4a62b7854e6ab44bf2e1e1d03fdf"
+];
+const carPair2 = [
+    "472e62bf7ac44086ba52f231e12a6815",
+    "900b8431b7724279a7ebeb02832e415d"
+]
+
+let cars = carPair1;
+
+// GroundShock ID: fde9c0febc9148fa915e584c85af62eb 
+// Skull ID: 0a1b4a62b7854e6ab44bf2e1e1d03fdf
+// Other 1 ID: 472e62bf7ac44086ba52f231e12a6815
+// Other 2 ID: 900b8431b7724279a7ebeb02832e415d
+
+gs = new Car(cars[0], "GroundShock", 1, trafficLight);
 
 let interval = setInterval(() => {
     if (gs.discovered) {
         clearInterval(interval);
-        skull = new Car("0a1b4a62b7854e6ab44bf2e1e1d03fdf", 4);
+        skull = new Car(cars[1], "Skull", 4, trafficLight);
         let skullInterval = setInterval(() => {
-            if (skull.initialized) {
+            if (skull.initialized && gs.initialized) {
+                // if (gs.initialized) {
                 clearInterval(skullInterval);
-                goForAwhile();
+                skull.testTrack(() => {
+                    setTimeout(() => {
+                        goForAwhile(skull);
+                    }, 5000);
+                });
+                gs.testTrack(() => {
+                    setTimeout(() => {
+                        goForAwhile(gs);
+                    }, 5000);
+                });
             }
         }, 500);
     }
 }, 500);
 
-function goForAwhile() {
-    skull.setSpeed();
+function goForAwhile(car) {
+    car.setSpeed(600, 100);
     setTimeout(() => {
-        skull.stop();
-    }, 15000);
+        car.stop();
+        // setTimeout(() => {
+        //     car.continue();
+        //     setTimeout(() => {
+        //         car.stop();
+        //     }, 15000)
+        // }, 5000);
+    }, 30000);
 }
