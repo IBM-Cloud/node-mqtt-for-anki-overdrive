@@ -1,25 +1,29 @@
 {
-  "name": "node-mqtt-for-anki-overdrive",
-  "description": "Node.js and MQTT API for Anki Overdrive",
-  "version": "0.0.1",
-  "author": "Niklas Heidloff <niklas_heidloff@de.ibm.com>",
-  "dependencies": {
-    "noble": "~1.2.1",
-    "async": "~0.2.9",
-    "mqtt": "1.5.0",
-    "properties": "1.2.1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ibm-bluemix/node-mqtt-for-anki-overdrive"
-  },
-  "keywords": [
-    "node",
-    "bluemix",
-    "iot",
-    "mqtt",
-    "anki",
-    "overdrive"
-  ],
-  "license": "Apache License, Version 2.0"
+    "name": "node-mqtt-for-anki-overdrive",
+    "description": "Node.js and MQTT API for Anki Overdrive",
+    "version": "0.0.1",
+    "author": "Niklas Heidloff <niklas_heidloff@de.ibm.com>",
+    "scripts": {
+        "start-gs": "node --nolazy --inspect-brk=9230 controller.js config-gs.properties",
+        "start-skull": "node --nolazy --inspect-brk=9229 controller.js config-skull.properties"
+    },
+    "dependencies": {
+        "async": "~0.2.9",
+        "mqtt": "1.5.0",
+        "noble-highsierra": "^1.8.1",
+        "properties": "1.2.1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ibm-bluemix/node-mqtt-for-anki-overdrive"
+    },
+    "keywords": [
+        "node",
+        "bluemix",
+        "iot",
+        "mqtt",
+        "anki",
+        "overdrive"
+    ],
+    "license": "Apache License, Version 2.0"
 }
